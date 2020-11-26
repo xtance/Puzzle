@@ -22,7 +22,7 @@ app.use(express.static(__dirname + path.sep + 'public', { dotfiles: 'allow', ext
 // Создание сервера
 const httpServer = http.createServer(app);
 httpServer.listen(8080, () => {
-	console.log('HTTP Server running on port 80');
+	console.log('HTTP Server launched!');
 });
 
 const io = require('socket.io')(httpServer);
