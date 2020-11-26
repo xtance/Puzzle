@@ -268,7 +268,6 @@ const Info = (sockets) => {
 
 // Уведомление игроку по Socket ID
 const Notify = (id, title = '...', message = '', color = '', theme = 'white', timeout = 5000) => {
-	console.log(id + ': ' + message);
 	io.to(id).emit('notify', {title: title, message: message, color: color, theme: theme, timeout: timeout});
 	return false;
 }
