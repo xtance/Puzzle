@@ -146,7 +146,7 @@ const Match = (url, diff, sockets) => {
 			// Переключаем передвигабельность плитки на всех игроках
 			socket._index = tile1.now;
 			tile1.taken = true;
-			sockets.forEach(s => io.to(s.id).emit('toggle_index', {index: tile1.now, drag: false}));
+			sockets.forEach(s => io.to(s.id).emit('toggle_index', {index: tile1.now, drag: s.id === socket.id}));
 		});
 
 		// Игрок отпустил плитку на каком-то индексе
@@ -191,24 +191,29 @@ const Match = (url, diff, sockets) => {
 			// Проверка на победу
 			if (counter >= diff*diff){
 
+				// Создание массива для данной сложности в рекордах
+				if (!records[diff]) records[diff] = [];
+
 				const unixtime = parseInt((+ new Date() - ts)/1000);
 				const min = Math.floor((unixtime/60/60)*60);
 				const sec = Math.floor(((unixtime/60/60)*60 - min)*60);
 				const time = ('0'+min).slice(-2) + ':' + ('0'+sec).slice(-2);
-				const winner = 	(sockets[0]._scores > sockets[1]._scores) ? 'Победитель: ' + sockets[0]._name : ((sockets[0]._scores < sockets[1]._scores) ? 'Победитель: ' + sockets[1]._name : 'Результат: ничья');
-				
-				// Создание массива для данной сложности в рекордах
-				if (!records[diff]) records[diff] = [];
-				
-				sockets.forEach(s => {
+				let winner = 'Результат: ничья';
 
-					// Уведомления
+				// Выявление победителя. Если ничья, рекорды не записываются
+				if (sockets[0]._scores > sockets[1]._scores) {
+					winner = 'Победитель: ' + sockets[0]._name;
+					records[diff].push({name: sockets[0]._name, time: unixtime, image: url});
+				} else if (sockets[0]._scores < sockets[1]._scores) {
+					winner = 'Победитель: ' + sockets[1]._name;
+					records[diff].push({name: sockets[1]._name, time: unixtime, image: url});
+				}
+				
+				// Уведомления
+				sockets.forEach(s => {
 					Notify(s.id, 'Игра завершена за ' + time + '!', winner, '', 'dark', 20000);
 					Notify(s.id, 'Хотите сыграть ещё раз?', 'Обновите страницу (F5)', '', 'dark', 20000);
 					s.emit('end', time);
-
-					// Добавление рекорда
-					if (s._scores > 0) records[diff].push({name: s._name, time: unixtime, image: url});
 				});
 
 				// Сортировка по времени
