@@ -79,9 +79,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
         layer.draw();
     });
 
-    // Только для отладки!
-    difficulty.value = DIFF = 2;
-    //Search();
+    // Стандартное значение сложности
+    difficulty.value = DIFF = 5;
 });
 
 window.Search = () => {
