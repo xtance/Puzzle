@@ -1,0 +1,8 @@
+{
+	"events": {
+		"restart": "(echo 'Restart!')",
+		"crash": "(echo 'Crash!')"
+    },
+    "ext": "js, json, html",
+	"delay": "0"
+}

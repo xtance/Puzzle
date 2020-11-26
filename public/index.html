@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width,initial-scale=1'>
+
+	<title>Пазлы</title>
+	<link rel='icon' type='image/png' href='./global/favicon.png'>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="./global/iziToast.css">
+	<link rel='stylesheet' href='./style.css'>
+	<link rel='stylesheet' href='./animation.css'>
+	
+	<script src="https://unpkg.com/konva@7.0.3/konva.min.js"></script>
+	<script src="./global/iziToast.min.js"></script>
+	<script src="./global/socket.io.js"></script>
+	<script src="./index.js"></script>
+</head>
+
+<body>
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+		<h5 class="my-0 mr-md-auto font-weight-normal">Пазлы</h5>
+		<nav class="my-2 my-md-0 mr-md-3">
+			<a class="p-2 text-dark" href="./about.html">Об игре</a>
+			<a class="p-2 text-dark" href="./records.html">Рекорды</a>
+			<a class="p-2 text-dark" href="./training.html">Тренировка</a>
+		</nav>
+		<a class="btn btn-outline-primary" href="./index.html">Онлайн-игра</a>
+	</div>
+	<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+		<p class="lead" id="description">
+			Онлайн-игра: соберите случайный пазл на скорость против соперника.<br>
+			Придумайте себе ник и выберите сложность:<br>
+		</p>
+		<div class="block" id="search">
+			<input id="nickname" type="text" class="form-control" style="display: inline-block; margin-bottom: 11px;" placeholder="Ник" value="">
+			<br>
+			<select class="btn btn-outline-secondary" id="difficulty">
+				<option value="2">2x2</option>
+				<option value="3">3x3</option>
+				<option value="4">4x4</option>
+				<option value="5">5x5</option>
+				<option value="6">6x6</option>
+				<option value="7">7x7</option>
+				<option value="8">8x8</option>
+				<option value="9">9x9</option>
+				<option value="10" selected="selected">10x10</option>
+			</select>
+			<button onclick="Search()" type="button" class="btn btn-outline-primary" style="width: 195px">Играть</button>
+		</div>
+		<div class="block" id="ingame" style="display: none;">
+			<table class="table table-hover">
+				<tbody>
+				  <tr class="table-light">
+					<th scope="row" id="player0">Игрок 0</th>
+					<td id="player0_score">0 шт.</td>
+				  </tr>
+				  <tr class="table-light">
+					<th scope="row" id="player1">Игрок 1</th>
+					<td id="player1_score">0 шт.</td>
+				  </tr>
+				  <tr class="table-success">
+					<th scope="row">Время</th>
+					<td id="showtime">0:00</td>
+				  </tr>
+				</tbody>
+			</table>
+		</div>
+    </div>
+	<div class="flex">
+		<div id="animation" style="display: none;">
+			<div id="fountainG">
+				<div id="fountainG_1" class="fountainG"></div>
+				<div id="fountainG_2" class="fountainG"></div>
+				<div id="fountainG_3" class="fountainG"></div>
+				<div id="fountainG_4" class="fountainG"></div>
+				<div id="fountainG_5" class="fountainG"></div>
+				<div id="fountainG_6" class="fountainG"></div>
+				<div id="fountainG_7" class="fountainG"></div>
+				<div id="fountainG_8" class="fountainG"></div>
+			</div>
+		</div>
+		<div class="canvas_parent" id="canvas_parent" style="display: none">
+            <div id="canvas"></div>
+		</div>
+    </div>
+	<div class="container" id="helper_container" style="display: none">
+        <div class="text-center">
+			<br>
+			<h5>Подсказка:</h5>
+			<br>
+			<div>
+				<canvas class="canvas_parent" id="helper"></canvas>
+			</div>
+        </div>
+	</div>
+	
+</body>
+</html>

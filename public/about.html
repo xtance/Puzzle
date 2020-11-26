@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width,initial-scale=1'>
+
+	<title>Пазлы</title>
+	<link rel='icon' type='image/png' href='./global/favicon.png'>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel='stylesheet' href='./style.css'>
+</head>
+
+<body>
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+		<h5 class="my-0 mr-md-auto font-weight-normal">Пазлы</h5>
+		<nav class="my-2 my-md-0 mr-md-3">
+			<a class="p-2 text-dark" href="./about.html">Об игре</a>
+			<a class="p-2 text-dark" href="./records.html">Рекорды</a>
+			<a class="p-2 text-dark" href="./training.html">Тренировка</a>
+		</nav>
+		<a class="btn btn-outline-primary" href="./index.html">Онлайн-игра</a>
+	</div>
+	  
+	<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+		<h1 class="display-4">Об игре</h1>
+		<p class="lead">
+			Пазлы являются известной головоломкой, существующей несколько веков.<br>
+			Игра в пазлы развивает внимание, восприятие, образное и логическое мышление.<br>
+			На данном сайте вы можете собрать пазл, в режиме одиночной игры или против соперника - онлайн.<br>
+			Далее описаны различия между этими двумя режимами...
+		</p>
+    </div>
+    
+	<div class="container">
+		<div class="card-deck mb-3 text-center">
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">Онлайн-игра</h4>
+				</div>
+				<div class="card-body">
+					<p>
+						В этом режиме вы собираете пазл одновременно с другим игроком.
+						Победителем считается тот, кто правильно поставил больше плиток - частей картинки.
+						Вы можете установить ник и выбрать сложность от 2х2 до 10х10.
+						Одновременно могут играть участники с одинаковой сложностью.
+						Картинка (пазл) выбирается случайно.
+						В конце игры ваш рекорд сохраняется и доступен на странице "Рекорды".
+					</p>
+				</div>
+            </div>
+            <div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">Тренировка</h4>
+				</div>
+				<div class="card-body">
+					<p>
+						Свободный режим игры. Здесь вы можете выбирать любую картинку и даже загружать свою.
+						Рекомендуется загружать квадратные картинки.
+						Ваши изображения не сохраняются на нашем сервере.
+						Так же можно выбирать сложность, а ещё доступны подсказки. 
+						Рекорды, поставленные в этом режиме, не записываются на странице "Рекорды".
+						Приятной тренировки!
+					</p>
+				</div>
+			</div>
+        </div>
+		<footer class="pt-4 my-md-5 pt-md-5 border-top text-center">
+			Игра разработана на <b>JavaScript</b> с использованием <b>Konva.JS, iziToast, Socket.IO</b>, стиль: <b>Bootstrap 4</b>
+		</footer>
+	</div>
+</body>
+</html>
