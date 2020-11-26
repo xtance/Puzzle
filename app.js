@@ -21,7 +21,10 @@ app.use(express.static(__dirname + path.sep + 'public', { dotfiles: 'allow', ext
 
 // Создание сервера
 const httpServer = http.createServer(app);
-httpServer.listen(8080, () => {
+// Если вы измените здесь порт, также измените его в клиентских файлах index.js, records.js
+// Иначе не подключится socket.io
+// По умолчанию порт 5555, стандартный для http 80, для https 443
+httpServer.listen(5555, () => {
 	console.log('HTTP Server launched!');
 });
 

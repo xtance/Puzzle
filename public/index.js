@@ -1,5 +1,5 @@
 // Порт, на котором работает сервер node.js
-const PORT = 8080;
+const PORT = 5555;
 
 let canvas, canvas_parent, stage, layer, timer, showtime, ts,
 DIFF = 7, SIDE = 72, PIXELS_X = DIFF*SIDE, PIXELS_Y = DIFF*SIDE,

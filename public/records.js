@@ -1,5 +1,5 @@
 // Порт, на котором работает сервер node.js
-const PORT = 8080;
+const PORT = 5555;
 
 // Событие полной загрузки страницы
 document.addEventListener("DOMContentLoaded", function(event) {
