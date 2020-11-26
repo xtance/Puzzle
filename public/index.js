@@ -33,8 +33,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         console.log('connected!');
     });
 
+    // Уведомление
     socket.on('notify', (obj) => Notify(obj.title, obj.message, obj.color, obj.theme, obj.timeout));
 
+    // Начало игры
     socket.on('start', (obj) => {
         DIFF = obj.diff;
         SetImage(obj.url, obj.r);
@@ -48,22 +50,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById('ingame').style.display = 'inline-block';
     });
 
+    // Изменение очков
     socket.on('scores', (info) => info.forEach((player, index) => {
         names[index].innerHTML = player.name;
         scores[index].innerHTML = player.score;
     }));
 
+    // Конец игры
     socket.on('end', (time) => {
         clearInterval(timer);
         showtime.innerHTML = time;
     });
 
-    socket.on('toggle_tile', (obj) => {
+    // Переключение возможности двигать плитку
+    socket.on('toggle_index', (obj) => {
         let tile = GetTileAtIndex(obj.index);
         tile.draggable(obj.drag);
         console.log('Плитка ' + obj.index + ' -> ' + obj.drag);
     });
 
+    // Когда кто-либо переместил плитку
     socket.on('switch', (one, two, notify) => {
 
         let tile = GetTileAtIndex(one);

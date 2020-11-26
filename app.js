@@ -146,7 +146,7 @@ const Match = (url, diff, sockets) => {
 			// Переключаем передвигабельность плитки на всех игроках
 			socket._index = tile1.now;
 			tile1.taken = true;
-			sockets.forEach(s => io.to(s.id).emit('toggle_index', {index: tile1.now, drag: s.id === socket.id}));
+			sockets.forEach(s => io.to(s.id).emit('toggle_index', {index: tile1.now, drag: false}));
 		});
 
 		// Игрок отпустил плитку на каком-то индексе
