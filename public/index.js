@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     // Стандартное значение сложности
-    difficulty.value = DIFF = 5;
+    difficulty.value = DIFF = 4;
 });
 
 window.Search = () => {

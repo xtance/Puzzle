@@ -1,5 +1,5 @@
 let canvas, canvas_parent, stage, layer, counter = 0, helps = 0, timer, showtime,
-MWIDTH = 7, MHEIGHT = 7,
+MWIDTH = 4, MHEIGHT = 4,
 SIDE = 72, PIXELS_X = MWIDTH*SIDE, PIXELS_Y = MHEIGHT*SIDE,
 socket, gallery, difficulty, helper;
 
